@@ -1,10 +1,12 @@
 // controllers/NivelController.js
+const Services = require('../services/Services')
+const niveisServices = new Services('Niveis')
 
 class NivelController {
 
     static async buscaNiveis(req,res){
         try {
-            const todasAsNivel = await database.Nivel.findAll()
+            const todasAsNivel = await niveisServices.pegaTodosOsRegistros()
             return res.status(200).json(todasAsNivel)
         } catch (error) {
             return res.status(500).json(error.message)
